@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: lightgray;
+}
+
+.logo{
+    width: 150px;
+    height: auto;
+    margin: 0 20px; 
+}
+
+.titulo-pagina{
+    font-weight: bold;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px;
+    max-width: 300px;
+}
+
+.device-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.altura-total{
+    height: 400px;
+}
+
+.status-indicator {
+    width: 100px;
+    height: 100px;
+}
+
+#results {
+    margin-top: 20px;
+}
