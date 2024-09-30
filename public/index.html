@@ -14,20 +14,19 @@
     <h1 class="titulo-pagina d-flex justify-content-center">Monitor de Ping</h1>
 </header>
 
-<body>
-    <section class="altura-total">
-        <div class="d-flex justify-content-center" id="results"></div>
+<body> 
+    <section class="altura-total container">
+        <div class="d-flex justify-content-center flex-wrap" id="results"></div>
     </section>
     <footer class="d-flex justify-content-center">
-        <h5>Criado por Weslei Almeida Muniz</h5>
+        <h5>Criado por T.I - Infra</h5>
     </footer>
 
     <script>
 
         const hosts = {
-            impressora: ['google.com', '192.168.1.102', 'facebook.com.br'],
-            pc: ['192.168.1.101'],
-            servidor: ['itch.io']
+            impressora: ['192.168.0.12', '192.168.0.13', '192.168.7.249', '192.168.7.255', '192.168.8.19',
+                '192.168.15.225', '192.168.7.243', '192.168.7.239']
         };
 
         async function checkPing(selectedHosts) {
@@ -55,11 +54,16 @@
                 const statusIndicator = document.createElement('img');
                 statusIndicator.className = 'status-indicator';
                 statusIndicator.src = result.time !== 'Inativo' ? `assets/img/${result.type}_online.png` : `assets/img/${result.type}_offline.png`; // Caminhos para as imagens
+                
+                const IpHostName = document.createElement('div');
+                IpHostName.textContent =  HostIP(result.host);
+                IpHostName.className = 'HostName'
 
                 const resultText = document.createElement('div');
                 resultText.textContent = `Host: ${result.host} - Ping: ${result.time || result.error}`;
 
                 deviceContainer.appendChild(statusIndicator);
+                deviceContainer.appendChild(IpHostName);
                 deviceContainer.appendChild(resultText);
                 card.appendChild(deviceContainer);
                 resultsDiv.appendChild(card); // Adiciona cada card ao resultado
@@ -84,8 +88,23 @@
                 } catch (error) {
                     displayPing([{ host: 'Erro', time: error.message }]);
                 }
-            }, 3000); // A cada 3 segundos
+            }, 10000); // A cada 20 segundos
         });
+
+        function HostIP(ip) {
+            const iphost = {
+                '192.168.0.12': 'RH BP',
+                '192.168.0.13': 'RH COLOR',
+                '192.168.7.249': 'Financeiro',
+                '192.168.7.255': 'Armazen',
+                '192.168.8.19': 'Torre1',
+                '192.168.15.225': 'Torre2',
+                '192.168.7.243': 'SAC',
+                '192.168.7.239': 'Pendencia',
+            }
+
+            return iphost[ip]
+        }
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
