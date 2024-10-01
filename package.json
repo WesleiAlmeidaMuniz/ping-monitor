@@ -1,18 +1,29 @@
 {
   "name": "ping-monitor",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "bin": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0",
-    "ping": "^0.4.4"
+    "express": "^4.17.1",
+    "ping": "^0.2.2"
   },
-  "devDependencies": {},
-  "description": ""
+  "pkg": {
+    "scripts": "server.js",
+    "assets": [
+      "public/**/*"
+    ],
+    "targets": [
+      "node16-win-x64"
+    ],
+    "ignore": [
+      "node_modules/open/xdg-open",
+      "node_modules/run-applescript/**/*",
+      "node_modules/is-inside-container/**/*",
+      "node_modules/is-wsl/**/*",
+      "node_modules/default-browser/**/*"
+    ]
+  }
 }

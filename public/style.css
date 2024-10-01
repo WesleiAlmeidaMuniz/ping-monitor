@@ -52,10 +52,6 @@ body {
     align-items: center;
 }
 
-.altura-total {
-    height: 400px;
-}
-
 .status-indicator {
     width: 75px;
     height: 75px;
