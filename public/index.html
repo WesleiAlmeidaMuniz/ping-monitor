@@ -17,7 +17,9 @@
 
 <body> 
     <section class="altura-total container">
-        <div class="d-flex justify-content-center flex-wrap" id="results"></div>
+        <div class="d-flex justify-content-center flex-wrap" id="results-imp"></div>
+        <div class="d-flex justify-content-center flex-wrap" id="results-cam"></div>
+        <div class="d-flex justify-content-center flex-wrap" id="results-tel"></div>
     </section>
     <footer class="d-flex justify-content-center">
         <h5>Criado por T.I - Infra</h5>
@@ -27,7 +29,9 @@
 
         const hosts = {
             impressora: ['192.168.0.12', '192.168.0.13', '192.168.7.249', '192.168.7.255', '192.168.8.19',
-                '192.168.15.225', '192.168.7.243', '192.168.7.239']
+                '192.168.15.225', '192.168.7.243', '192.168.7.239'] ,
+            camera:['192.168.7.243'],
+            ramal:['192.168.7.239']
         };
 
         async function checkPing(selectedHosts) {
@@ -41,8 +45,12 @@
 
 
         function displayPing(results) {
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = ''; // Limpa resultados anteriores
+            const resultsDivImp = document.getElementById('results-imp');
+            const resultsDivCam = document.getElementById('results-cam');
+            const resultsDivTel = document.getElementById('results-tel');
+            resultsDivImp.innerHTML = '';
+            resultsDivCam.innerHTML = '';
+            resultsDivTel.innerHTML = '';
 
             results.forEach(result => {
                 const card = document.createElement('div');
@@ -67,7 +75,13 @@
                 deviceContainer.appendChild(IpHostName);
                 deviceContainer.appendChild(resultText);
                 card.appendChild(deviceContainer);
-                resultsDiv.appendChild(card); // Adiciona cada card ao resultado
+                if(result.type === 'impressora'){
+                    resultsDivImp.appendChild(card); // Adiciona cada card ao resultado Impressora
+                } else if (result.type === 'camera'){
+                    resultsDivCam.appendChild(card); // Adiciona cada card ao resultado Cameras
+                } else if (result.type === 'ramal'){
+                    resultsDivTel.appendChild(card); // Adiciona cada card ao resultado Ramal
+                }
             });
         }
 
