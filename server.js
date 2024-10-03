@@ -1,7 +1,7 @@
 const express = require('express');
 const ping = require('ping');
 const path = require('path');
-const { exec } = require('child_process'); // Substitui o pacote 'open'
+const { exec } = require('child_process');
 const os = require('os');
 
 const app = express();

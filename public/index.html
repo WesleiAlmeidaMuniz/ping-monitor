@@ -17,8 +17,13 @@
 
 <body> 
     <section class="altura-total container">
+        <h1>Impressoras</h1>
         <div class="d-flex justify-content-center flex-wrap" id="results-imp"></div>
+        <hr>
+        <h1>Câmeras</h1>
         <div class="d-flex justify-content-center flex-wrap" id="results-cam"></div>
+        <hr>
+        <h1>Ramal</h1>
         <div class="d-flex justify-content-center flex-wrap" id="results-tel"></div>
     </section>
     <footer class="d-flex justify-content-center">
@@ -29,9 +34,9 @@
 
         const hosts = {
             impressora: ['192.168.0.12', '192.168.0.13', '192.168.7.249', '192.168.7.255', '192.168.8.19',
-                '192.168.15.225', '192.168.7.243', '192.168.7.239'] ,
-            camera:['192.168.7.243'],
-            ramal:['192.168.7.239']
+                '192.168.15.225', '192.168.7.243', '192.168.7.239'],
+            camera:[],
+            ramal:['192.168.8.2','192.168.8.10','192.168.8.3','192.168.2.10','192.168.15.223','192.168.15.16','192.168.15.19','192.168.8.142']
         };
 
         async function checkPing(selectedHosts) {
@@ -94,7 +99,6 @@
 
                 try {
                     const results = await checkPing(allHosts); // Faz o ping em todos os hosts
-                    console.log('Estou funcionando a cada 5 segundos');
                     const detailedResults = results.map((result, index) => ({
                         host: allHosts[index], // Associa o host ao resultado
                         time: result.time,
@@ -104,7 +108,7 @@
                 } catch (error) {
                     displayPing([{ host: 'Erro', time: error.message }]);
                 }
-            }, 5000); // A cada 5 segundos
+            }, 10000); // A cada 5 segundos
         });
 
         function HostIP(ip) {
@@ -117,6 +121,14 @@
                 '192.168.15.225': 'Torre2',
                 '192.168.7.243': 'SAC',
                 '192.168.7.239': 'Pendencia',
+                '192.168.15.16': 'RH 200',
+                '192.168.8.10':'SAC 201',
+                '192.168.8.3': 'SAC 202',
+                '192.168.15.223': 'SAC 203',
+                '192.168.8.2': 'SAC 204',
+                '192.168.2.10': 'SAC 205',
+                '192.168.8.142': 'Torre 207',
+                '192.168.15.19': 'Pendencia 208'
             }
 
             return iphost[ip]
