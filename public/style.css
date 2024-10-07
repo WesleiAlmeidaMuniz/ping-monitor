@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 0.75em;
     margin: 20px;
     background-color: lightgray;
 }
@@ -17,9 +18,9 @@ body {
 .card {
     border: 2px solid black;
     border-radius: 5px;
-    padding: 10px;
     margin: 10px 10px;
-    width: 300px;
+    padding: 5px 0;
+    width: 125px;
     -webkit-animation: pisca .9s linear;
     -moz-animation: pisca .9s linear;
     -ms-animation: pisca .9s linear;
@@ -53,8 +54,12 @@ body {
 }
 
 .status-indicator {
-    width: 75px;
-    height: 75px;
+    width: 25px;
+    height: 25px;
+}
+
+.containerDados{
+    justify-content: right;
 }
 
 #results {

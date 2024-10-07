@@ -16,7 +16,7 @@
 </header>
 
 <body> 
-    <section class="altura-total container">
+    <section class="altura-total">
         <h1>Impressoras</h1>
         <div class="d-flex justify-content-center flex-wrap" id="results-imp"></div>
         <hr>
@@ -36,7 +36,8 @@
             impressora: ['192.168.0.12', '192.168.0.13', '192.168.7.249', '192.168.7.255', '192.168.8.19',
                 '192.168.15.225', '192.168.7.243', '192.168.7.239'],
             camera:[],
-            ramal:['192.168.8.2','192.168.8.10','192.168.8.3','192.168.2.10','192.168.15.223','192.168.15.16','192.168.15.19','192.168.8.142']
+            ramal:['192.168.15.16','192.168.8.10','192.168.8.3','192.168.15.223','192.168.8.2','192.168.2.10',
+            '192.168.8.142','192.168.15.19']
         };
 
         async function checkPing(selectedHosts) {
@@ -73,12 +74,21 @@
                 IpHostName.textContent =  HostIP(result.host);
                 IpHostName.className = 'HostName'
 
-                const resultText = document.createElement('div');
-                resultText.textContent = `Host: ${result.host} - Ping: ${result.time || result.error}`;
+                const containerDados = document.createElement('div');
+                containerDados.className = 'container-dados';
+
+                const resultTextHost = document.createElement('div');
+                resultTextHost.innerHTML = `Host: <br> ${result.host}`;
+
+                const resultTextIP = document.createElement('div');
+                resultTextIP.innerHTML = `Ping: <Br> ${result.time || result.error}`;
+                
 
                 deviceContainer.appendChild(statusIndicator);
                 deviceContainer.appendChild(IpHostName);
-                deviceContainer.appendChild(resultText);
+                containerDados.appendChild(resultTextHost);
+                containerDados.appendChild(resultTextIP);
+                deviceContainer.appendChild(containerDados);
                 card.appendChild(deviceContainer);
                 if(result.type === 'impressora'){
                     resultsDivImp.appendChild(card); // Adiciona cada card ao resultado Impressora
