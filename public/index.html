@@ -74,6 +74,7 @@
                 IpHostName.textContent =  HostIP(result.host);
                 IpHostName.className = 'HostName'
 
+                /*
                 const containerDados = document.createElement('div');
                 containerDados.className = 'container-dados';
 
@@ -82,13 +83,13 @@
 
                 const resultTextIP = document.createElement('div');
                 resultTextIP.innerHTML = `Ping: <Br> ${result.time || result.error}`;
-                
+                */
 
                 deviceContainer.appendChild(statusIndicator);
                 deviceContainer.appendChild(IpHostName);
-                containerDados.appendChild(resultTextHost);
-                containerDados.appendChild(resultTextIP);
-                deviceContainer.appendChild(containerDados);
+                //containerDados.appendChild(resultTextHost);
+                //containerDados.appendChild(resultTextIP);
+                //deviceContainer.appendChild(containerDados);
                 card.appendChild(deviceContainer);
                 if(result.type === 'impressora'){
                     resultsDivImp.appendChild(card); // Adiciona cada card ao resultado Impressora
