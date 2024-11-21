@@ -21,6 +21,7 @@ body {
     margin: 10px 10px;
     padding: 5px 0;
     width: 125px;
+    justify-content: center;
     -webkit-animation: pisca .9s linear;
     -moz-animation: pisca .9s linear;
     -ms-animation: pisca .9s linear;
@@ -44,6 +45,7 @@ body {
 
 .HostName {
     font-weight: bold;
+    text-align: center;
 }
 
 .device-container {
